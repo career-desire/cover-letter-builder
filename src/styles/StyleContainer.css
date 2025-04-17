@@ -1,0 +1,173 @@
+.style-container {
+    width: 275px;
+    font-size: 13px;
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    width: 275px;
+    height: calc(100vh - 80px);
+    z-index: 8;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    overflow-y: auto;
+    background: #fff;
+    scrollbar-width: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+    transition: 0.7s ease-in-out;
+}
+
+#style-close {
+    position: fixed;
+    left: -300px;
+    transition: ease-in-out 700ms;
+}
+
+.style-header {
+    width: 265px;
+    margin: 5px;
+    padding: 10px;
+    font-weight: 600;
+    border-bottom: 2px solid #D1D5DB;
+    background-color: #FFF;
+}
+
+.style-header h1{
+    font-size: 15px;
+}
+
+.style-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 15px 25px;
+}
+
+.style-body select {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    cursor: pointer;
+}
+
+.style-body select option {
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    cursor: pointer;
+}
+
+#theme-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px;
+}
+
+.style-body .theme-option {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #D1D5DB;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.style-body>input {
+    border: none;
+    outline: none;
+    padding: 0;
+    border-bottom: 1px solid #D1D5DB;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.style-body .black {
+    background-color: #000000;
+}
+
+.style-body .grey {
+    background-color: #6b7272;
+}
+
+.style-body .purple {
+    background-color: #7851A9;
+}
+
+.style-body .cd-blue {
+    background-color: #266CA9;
+}
+
+.style-body .blue {
+    background-color: #003153;
+}
+
+.style-body .green {
+    background-color: #2E8B57;
+}
+
+.style-body .teal {
+    background-color: #008080;
+}
+
+.style-body .yellow {
+    background-color: #DAA520;
+}
+
+.style-body .pink {
+    background-color: #DC143C;
+}
+
+.style-body .red {
+    background-color: #8B0000;
+}
+
+.style-body .dark-pink {
+    background-color: #5B194D;
+}
+
+.template-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px;
+}
+
+.template-image{
+    width: 245px;
+    border: 1px solid #D1D5DB;
+    cursor: pointer;
+}
+
+.style-body #active{
+    border: 2px solid #266CA9;
+}
+
+.template-div{
+    position: relative;
+}
+
+.template-number{
+    width: 100%;
+    display: none;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.template-div:hover .template-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

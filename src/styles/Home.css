@@ -1,0 +1,75 @@
+.home {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.menu-icon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 65px;
+    left: 295px;
+    padding: 5px;
+    z-index: 10;
+    transition: all ease-in-out 700ms;
+}
+
+.menu-icon-container .menu-icon {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #FFF;
+    border: 1px solid #e9e9e9;
+    border: 1px solid #cfcfcf;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    font-size: 1.1rem;
+}
+
+.menu-icon-container .menu-icon:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
+#menu-icon-close {
+    position: fixed;
+    left: 8px;
+    transition: ease-in-out 700ms;
+}
+
+@media screen and (max-width: 500px) {
+    .zoom-option {
+        display: none;
+    }
+
+    .zoom {
+        transform: scale(0.7) !important;
+    }
+
+    .zoom-container {
+        overflow: hidden;
+    }
+
+    .home .download-btn {
+        top: 60px;
+        left: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .zoom {
+        transform: scale(0.65) !important;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .zoom {
+        transform: scale(0.6) !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .zoom {
+        transform: scale(0.55) !important;
+    }
+}
