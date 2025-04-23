@@ -31,25 +31,57 @@
 }
 
 .quill-field {
+    height: calc(100vh - 250px);
     flex-direction: column;
     padding: 30px;
-    gap: 10px;
-    justify-content: flex-start;
+    gap: 20px;
 }
 
-.quill-field .btn {
-    margin-top: 50px;
-    padding: 5px;
+.editor-container .btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editor-container .btn {
+    padding: 10px;
     border: none;
     outline: none;
-    background-color: transparent;
-    color: rgb(189, 17, 17);
+    background-color: rgb(189, 17, 17);
+    color: #fff;
     cursor: pointer;
+    border-radius: 8px;
+}
+
+.editor-container .close {
+    background-color: #266CA9;
 }
 
 .form-quill {
     width: 100%;
     height: 70%;
+}
+
+.quill-field .ql-container {
+    height: 200px;
+}
+
+.editor-container .dummy-measurer {
+    position: absolute;
+    visibility: hidden;
+    width: 535px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.limit-warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 8px;
 }
 
 .floating-label-input {
@@ -88,18 +120,6 @@
     transition: 0.2s ease all;
     pointer-events: none;
     padding: 0 4px;
-}
-
-.close {
-    position: fixed;
-    top: 70px;
-    right: 10px;
-    background-color: transparent;
-    font-size: 1.5rem;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 20px;
 }
 
 @media screen and (max-width: 1200px) {

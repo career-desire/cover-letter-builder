@@ -1,8 +1,6 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 import { CoverLetterContext } from "../../context/CoverLetterContext";
 import { updateCoverLetter } from "../../utils/handleUpdate";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 function BasicTab({ setOpenEditor }) {
   const { coverLetter, setCoverLetter } = useContext(CoverLetterContext);
@@ -58,9 +56,11 @@ function BasicTab({ setOpenEditor }) {
             className="form-input"
           />
         </div>
-        <button className="close" onClick={() => setOpenEditor("")}>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
+        <div className="btn-container">
+          <button className="btn close" onClick={() => setOpenEditor("")}>
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

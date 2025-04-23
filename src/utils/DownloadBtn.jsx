@@ -63,10 +63,10 @@ const DownloadBtn = () => {
 
     // Load all fonts concurrently
     const [fontBase64, boldFontBase64, italicFontBase64, boldItalicFontBase64] = await Promise.all([
-      loadFont(`/fonts/${fontName}.ttf`),
-      loadFont(`/fonts/${fontName}-Bold.ttf`),
-      loadFont(`/fonts/${fontName}-Italic.ttf`),
-      loadFont(`/fonts/${fontName}-BoldItalic.ttf`),
+      loadFont(`/fonts//${fontName}/${fontName}.ttf`),
+      loadFont(`/fonts//${fontName}/${fontName}-Bold.ttf`),
+      loadFont(`/fonts//${fontName}/${fontName}-Italic.ttf`),
+      loadFont(`/fonts//${fontName}/${fontName}-BoldItalic.ttf`),
     ]);
 
     // Abort if font loading failed

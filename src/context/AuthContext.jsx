@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { checkLoginStatus, loginUser, logoutUser, registerUser } from "../services/authService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AlertContext } from "./AlertContext";
-import { useResumeData } from "./ResumeContext";
 
 export const AuthContext = createContext();
 
@@ -11,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(null);
   const { setAlert, setAlertMessage } = useContext(AlertContext);
-  const { resume, setResume, getInitialResume } = useResumeData();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -75,7 +73,6 @@ export const AuthProvider = ({ children }) => {
       await logoutUser();
       setUser(null);
       setToken(null);
-      setResume(getInitialResume());
       setAlert("success");
       setAlertMessage("Logout successfully!");
       navigate("/");

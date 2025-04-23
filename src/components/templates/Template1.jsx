@@ -9,15 +9,24 @@ import "./templateStyles/Template1.css"
 function Template1({ setOpenEditor }) {
     const { coverLetter } = useContext(CoverLetterContext);
     const coverLetterData = coverLetter.coverLetterData;
-    const style = coverLetter.style;
-    const { fontName, fontSize, theme } = style;
+    const { fontName, fontSize, theme } = coverLetter.style;
     const { email, phone, linkedin, gitHub, portfolio, blogs } = coverLetterData
 
     return (
         <div className="cover-letter" style={{ fontFamily: fontName, fontSize: `${fontSize}px` }}>
-            <header className="header">
-                <p className="name" style={{ color: theme, fontSize: fontSize + 10 }}>{coverLetterData.name}</p>
-                <p className="job-title">{coverLetterData.jobTitle || ""}</p>
+            <header className="cl-header">
+                <p 
+                    className="name" 
+                    style={{ color: theme, fontSize: `${Number(fontSize) + 12}px` }}
+                >
+                    {coverLetterData.name}
+                </p>
+                <p 
+                    className="job-title"
+                    style={{ fontSize: `${Number(fontSize) + 6}px` }}
+                >
+                    {coverLetterData.jobTitle || ""}
+                </p>
                 {(email || phone || linkedin || gitHub || portfolio || blogs) &&
                     (<div className="link-container">
                         <p>{email}</p>
