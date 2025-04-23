@@ -20,7 +20,6 @@ function ContentTab({ setOpenEditor }) {
         const headerHeight = header.offsetHeight;
         const dummyHeight = dummyRef.current.offsetHeight;
         const totalHeight = headerHeight + dummyHeight
-        console.log(totalHeight);
         setIsPageLimitReached(totalHeight > 1500);
       }
     };
