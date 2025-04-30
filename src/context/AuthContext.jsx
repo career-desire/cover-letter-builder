@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  //Restore session if login below 7days
+  // Restore session if login below 7 days
   useEffect(() => {
     const restoreSession = async () => {
       setLoading(true);
@@ -29,45 +29,50 @@ export const AuthProvider = ({ children }) => {
     restoreSession();
   }, []);
 
-  const register = async (registerForm) => {
-    try {
-      const registerData = await registerUser(registerForm);
-      if (registerData?.accessToken) {
-        setToken(registerData.accessToken);
-        setUser(registerData.user);
-        setAlert("success")
-        setAlertMessage("Register successfully!")
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Registration failed:", error.message || error);
-      setAlert("failed")
-      setAlertMessage(`${error.message || error}!`)
-      throw new Error(error.message || "Registration failed. Please try again.");
+  // Register function with enhanced error handling
+export const registerUser = async (registerForm) => {
+  try {
+    const response = await API.post("/register", registerForm);
+    if (response.data.accessToken) {
+      setAccessToken(response.data.accessToken);
     }
-  };
+    return response.data;
+  } catch (error) {
+    const errorMessage =
+      error?.response?.data?.message || error.message || "Registration failed. Please try again.";
+    console.error("Registration error:", errorMessage);
+    throw new Error(errorMessage); // Throw an error object with the message
+  }
+};
 
+  // Login function with enhanced error handling
   const login = async (loginForm) => {
     try {
       const loginData = await loginUser(loginForm, setToken);
+
       if (loginData.accessToken) {
         setToken(loginData.accessToken);
-        setUser(loginData.user)
-        setAlert("success")
-        setAlertMessage("Login successfully!")
+        setUser(loginData.user);
+        setAlert("success");
+        setAlertMessage("Login successfully!");
 
         const redirectPath = location.state?.from || "/";
         navigate(redirectPath, { replace: true });
       }
     } catch (error) {
-      console.error("Login failed:", error.message || error);
-      setAlert("failed")
-      setAlertMessage(`${error.message || error}!`)
-      console.log(error)
-      throw new Error(error.message || "Login failed. Please try again.");
+      console.error("Login failed:", error);
+
+      const errorMessage =
+        error?.response?.data?.message || error.message || "Login failed. Please try again.";
+
+      setAlert("failed");
+      setAlertMessage(errorMessage);
+      console.log(error);
+      throw new Error(errorMessage);
     }
   };
 
+  // Logout function
   const logout = async () => {
     try {
       await logoutUser();
@@ -77,8 +82,9 @@ export const AuthProvider = ({ children }) => {
       setAlertMessage("Logout successfully!");
       navigate("/");
     } catch (error) {
-      setAlert("failed")
-      setAlertMessage(`${error.message || error}!`)
+      setAlert("failed");
+      setAlertMessage(error.message || "Logout failed!");
+      console.error("Logout failed:", error);
     }
   };
 

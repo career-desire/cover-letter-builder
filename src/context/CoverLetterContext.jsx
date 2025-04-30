@@ -29,13 +29,6 @@ function CoverLetterProvider({ children }) {
     _id: null,
   });
 
-  useEffect(() => {
-    const savedCoverLetter = localStorage.getItem("coverLetter");
-    if (savedCoverLetter) {
-      setCoverLetter(JSON.parse(savedCoverLetter));
-    }
-  }, []);
-
   return (
     <CoverLetterContext.Provider
       value={{ coverLetter, setCoverLetter, isContentFilled, setIsContentFilled }}

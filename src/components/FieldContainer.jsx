@@ -6,10 +6,10 @@ import '../styles/FieldContainer.css'
 function FieldContainer({ openEditor, setOpenEditor }) {
 
   return (
-    <div>
+    <>
       {openEditor === "header" && <BasicTab setOpenEditor={setOpenEditor} />}
       {openEditor === "content" && <ContentTab setOpenEditor={setOpenEditor} />}
-    </div>
+    </>
   )
 }
 

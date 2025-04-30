@@ -34,16 +34,17 @@ API.interceptors.response.use(
     }
 );
 
-export const saveCoverLetter = async (coverLetter, setAlert, setAlertMessage) => {
+export const saveCoverLetter = async (coverLetter, setCoverLetter, setAlert, setAlertMessage) => {
     try {
         const response = await API.post("/", coverLetter);
         setAlert("success");
         setAlertMessage("Cover Letter Saved!");
+        setCoverLetter(response.data);
         return response.data
     } catch (error) {
         setAlert("failure")
         setAlertMessage("Cover Letter Not Saved!");
-        throw error.response?.data?.message || "Failed to save resume.  "
+        throw new Error(error.response?.data?.message || "Failed to save resume.");
     }
 }
 
@@ -53,7 +54,7 @@ export const getAllCoverLetter = async (setCoverLetter) => {
         setCoverLetter(response.data);
         return response.data;
     } catch (error) {
-        throw error.response?.data?.message || "Failed to fetch cover letter.";
+        throw new Error(error.response?.data?.message || "Failed to fetch cover letter.");
     }
 }
 
@@ -62,11 +63,11 @@ export const getCoverLetterById = async (id) => {
         const response = await API.get(`/${id}`);
         return response.data;
     } catch (error) {
-        throw error.response?.data?.message || "Failed to fetch cover letter.";
+        throw new Error(error.response?.data?.message || "Failed to fetch cover letter.");
     }
 }
 
-export const updateCoverLetter = async (id, updatedCoverLetter, setAlert, setAlertMessage, setCoverLetter) => {
+export const updateCoverLetter = async (id, updatedCoverLetter, setCoverLetter, setAlert, setAlertMessage) => {
     try {
         const response = await API.put(`/${id}`, updatedCoverLetter);
         setAlert("success");
@@ -76,19 +77,19 @@ export const updateCoverLetter = async (id, updatedCoverLetter, setAlert, setAle
     } catch (error) {
         setAlert("Failure")
         setAlertMessage("Cover Letter Not Updated!")
-        throw error.response?.data?.message || "Failed to update cover letter"
+        throw new Error(error.response?.data?.message || "Failed to update cover letter");
     }
 }
 
 export const deleteCoverLetter = async (id, setAlert, setAlertMessage) => {
     try {
-        const response = await API.delete(`${id}`);
+        const response = await API.delete(`/${id}`);
         setAlert("success");
         setAlertMessage("Cover Letter Deleted!");
         return response.data;
     } catch (error) {
         setAlert("Failure");
         setAlertMessage("Cover Letter Not Deleted!");
-        throw error.response?.data?.message || "Failed to delete cover letter.";
+        throw new Error(error.response?.data?.message || "Failed to delete cover letter.");
     }
 }

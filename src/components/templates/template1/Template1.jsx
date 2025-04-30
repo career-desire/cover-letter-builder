@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { CoverLetterContext } from '../../context/CoverLetterContext';
+import { CoverLetterContext } from '../../../context/CoverLetterContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import DOMPurify from "dompurify";
 import WaterMark from "/images/CD_Logo.png"
-import "./templateStyles/Template1.css"
+import "./Template1.css"
+import { Link } from 'react-router-dom';
 
 function Template1({ setOpenEditor }) {
     const { coverLetter } = useContext(CoverLetterContext);
@@ -15,13 +16,13 @@ function Template1({ setOpenEditor }) {
     return (
         <div className="cover-letter" style={{ fontFamily: fontName, fontSize: `${fontSize}px` }}>
             <header className="cl-header">
-                <p 
-                    className="name" 
+                <p
+                    className="name"
                     style={{ color: theme, fontSize: `${Number(fontSize) + 12}px` }}
                 >
                     {coverLetterData.name}
                 </p>
-                <p 
+                <p
                     className="job-title"
                     style={{ fontSize: `${Number(fontSize) + 6}px` }}
                 >
@@ -64,7 +65,11 @@ function Template1({ setOpenEditor }) {
                         }
                     </>
                 ) : null}
-                <img className="watermark-img" src={WaterMark} alt="WaterMark" />
+                <img className="watermark-img" src={WaterMark} alt="Career desire watermark" />
+                <div className='watermark-text-container'>
+                    <p className='watermark-text'>Powered by </p>
+                    <Link href="https://careerdesire.in/"><p>www.careerdesire.in</p></Link>
+                </div>
             </section>
             <div className="editor flex-center">
                 <div className="head-editor flex-center">

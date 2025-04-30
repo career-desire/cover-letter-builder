@@ -13,6 +13,7 @@ function ContentTab({ setOpenEditor }) {
   const [editorContent, setEditorContent] = useState(coverLetterData?.content || "");
   const [isPageLimitReached, setIsPageLimitReached] = useState(false);
 
+  // handle dummy div
   useEffect(() => {
     const checkHeight = () => {
       if (dummyRef.current) {

@@ -1,7 +1,9 @@
+// This component handle preview and zoom operations
+
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Preview.css';
 import { MagnifyingGlassMinus, MagnifyingGlassPlus } from "phosphor-react";
-import Template1 from './templates/Template1';
+import Template1 from './templates/template1/Template1';
 
 function Preview({ setOpenEditor }) {
     const [screenSize, setScreenSize] = useState(1);

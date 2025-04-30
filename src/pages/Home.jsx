@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/Home.css'
 import FieldContainer from '../components/FieldContainer';
 import Preview from '../components/Preview';
@@ -9,8 +9,9 @@ import StyleContainer from '../components/StyleContainer.jsx';
 import { CoverLetterContext } from '../context/CoverLetterContext.jsx';
 import Warning from '../layout/Warning.jsx';
 import { AuthContext } from '../context/AuthContext.jsx';
-import { saveCoverLetter, updateCoverLetter } from '../services/coverLetterService.js';
+import { getCoverLetterById, saveCoverLetter, updateCoverLetter } from '../services/coverLetterService.js';
 import { AlertContext } from '../context/AlertContext.jsx';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 function Home() {
@@ -19,7 +20,25 @@ function Home() {
     const [styleMenuOpen, setStyleMenuOpen] = useState(false);
     const { user, loading } = useContext(AuthContext);
     const { setAlert, setAlertMessage } = useContext(AlertContext);
-    const { coverLetter, isContentFilled } = useContext(CoverLetterContext);
+    const { coverLetter, setCoverLetter, isContentFilled } = useContext(CoverLetterContext);
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    // Use fetch from dashboard
+    useEffect(() => {
+        if (!id) return;
+
+        const fetchResume = async () => {
+            try {
+                const data = await getCoverLetterById(id);
+                setCoverLetter(data);
+            } catch (error) {
+                console.error("Failed to fetch resume:", error);
+            }
+        };
+
+        fetchResume();
+    }, [user]);
 
     if (loading) return (
         <div className="site-loader">
@@ -35,7 +54,7 @@ function Home() {
     //Save coverLetter in database
     const handleSaveCoverLetter = () => {
 
-        if (!coverLetter.coverLetterData._id) {
+        if (!coverLetter._id) {
             if (!user) {
                 setShowWarning("login")
             } else {
@@ -49,12 +68,12 @@ function Home() {
     //Handle existing coverLetter
     const confirmSaveNew = () => {
         setShowWarning(false);
-        saveCoverLetter({ coverLetterData: coverLetter.coverLetterData, style: coverLetter.style }, setAlert, setAlertMessage);
+        saveCoverLetter({ coverLetterData: coverLetter.coverLetterData, style: coverLetter.style }, setCoverLetter, setAlert, setAlertMessage);
     };
 
     const confirmUpdate = () => {
         setShowWarning(false);
-        updateCoverLetter(coverLetter._id, { coverLetterData: coverLetter.coverLetterData, style: coverLetter.style }, setAlert, setAlertMessage);
+        updateCoverLetter(coverLetter._id, { coverLetterData: coverLetter.coverLetterData, style: coverLetter.style }, setCoverLetter, setAlert, setAlertMessage);
     };
 
     return (
@@ -100,7 +119,7 @@ function Home() {
             )}
             {showWarning === "login" && (
                 <Warning
-                    warnText="Login to save you progress"
+                    warnText="Login to save your progress"
                     actionTextOne="Login"
                     cancelText="Cancel"
                     actionOne={() => navigate("/login", { state: { from: location.pathname } })}

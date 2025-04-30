@@ -6,13 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import Warning from "./Warning.jsx";
 import { AuthContext } from "../context/AuthContext.jsx";
-import { CoverLetterContext } from "../context/CoverLetterContext.jsx";
 
 function NavBar() {
   const [handleLogout, setHandleLogout] = useState(false);
   const [islogout, setIsLogout] = useState(false);
   const { logout, user } = useContext(AuthContext);
-  const { coverLetter } = useContext(CoverLetterContext);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
 
@@ -42,12 +40,6 @@ function NavBar() {
       </Link>
       <div className="nav-options">
         <div className="btn-container">
-          <button
-            className="auth-btn"
-            onClick={() => localStorage.setItem("coverLetter", JSON.stringify(coverLetter))}
-          >
-            Save
-          </button>
           {!user && <Link to="/login"><button className="auth-btn">Login</button></Link>}
           {user && (
             <div ref={profileRef} className="profile-container" id={isProfileOpen ? "profile-open" : "profile-close"}>
