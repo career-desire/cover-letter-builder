@@ -38,7 +38,7 @@ function Home() {
         };
 
         fetchResume();
-    }, [user]);
+    }, [id, user]);
 
     if (loading) return (
         <div className="site-loader">

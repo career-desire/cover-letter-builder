@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Register function with enhanced error handling
-export const registerUser = async (registerForm) => {
+const register = async (registerForm) => {
   try {
     const response = await API.post("/register", registerForm);
     if (response.data.accessToken) {
