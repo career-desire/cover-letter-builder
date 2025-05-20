@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.8.4",
     "dompurify": "^3.2.5",
+    "firebase": "^11.7.3",
     "framer-motion": "^12.6.3",
     "jspdf": "^3.0.1",
     "phosphor-react": "^1.4.1",
