@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { checkLoginStatus, loginUser, logoutUser, registerUser } from "../services/authService";
+import { checkLoginStatus, loginUser, logoutUser } from "../services/authService";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AlertContext } from "./AlertContext";
 
@@ -28,22 +28,6 @@ export const AuthProvider = ({ children }) => {
 
     restoreSession();
   }, []);
-
-  // Register function with enhanced error handling
-const register = async (registerForm) => {
-  try {
-    const response = await API.post("/register", registerForm);
-    if (response.data.accessToken) {
-      setAccessToken(response.data.accessToken);
-    }
-    return response.data;
-  } catch (error) {
-    const errorMessage =
-      error?.response?.data?.message || error.message || "Registration failed. Please try again.";
-    console.error("Registration error:", errorMessage);
-    throw new Error(errorMessage); // Throw an error object with the message
-  }
-};
 
   // Login function with enhanced error handling
   const login = async (loginForm) => {
@@ -89,7 +73,7 @@ const register = async (registerForm) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, token, register, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, loading, token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

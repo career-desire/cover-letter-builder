@@ -4,6 +4,7 @@ import NavBar from './layout/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import ForgotPassword from './pages/ForgotPassword.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/cover-letter/:id" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

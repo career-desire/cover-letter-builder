@@ -42,7 +42,7 @@ export const saveCoverLetter = async (coverLetter, setCoverLetter, setAlert, set
         setCoverLetter(response.data);
         return response.data
     } catch (error) {
-        setAlert("failure")
+        setAlert("failed")
         setAlertMessage("Cover Letter Not Saved!");
         throw new Error(error.response?.data?.message || "Failed to save resume.");
     }
@@ -75,7 +75,7 @@ export const updateCoverLetter = async (id, updatedCoverLetter, setCoverLetter, 
         setCoverLetter(response.data);
         return response.data;
     } catch (error) {
-        setAlert("Failure")
+        setAlert("failed")
         setAlertMessage("Cover Letter Not Updated!")
         throw new Error(error.response?.data?.message || "Failed to update cover letter");
     }
@@ -88,7 +88,7 @@ export const deleteCoverLetter = async (id, setAlert, setAlertMessage) => {
         setAlertMessage("Cover Letter Deleted!");
         return response.data;
     } catch (error) {
-        setAlert("Failure");
+        setAlert("failed");
         setAlertMessage("Cover Letter Not Deleted!");
         throw new Error(error.response?.data?.message || "Failed to delete cover letter.");
     }
