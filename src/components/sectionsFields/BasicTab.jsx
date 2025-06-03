@@ -11,12 +11,12 @@ function BasicTab({ setOpenEditor }) {
     { name: "jobTitle", label: "Designation", type: "text", required: true },
     { name: "email", label: "Email", type: "email", required: true },
     { name: "phone", label: "Phone", type: "text", required: true },
-    { name: "location", label: "Location", type: "text" },
     { name: "linkedin", label: "Linkedin", type: "text" },
     { name: "gitHub", label: "Git Hub", type: "text" },
     { name: "portfolio", label: "Portfolio", type: "text" },
     { name: "blogs", label: "Blogs", type: "text" },
     { name: "receiver", label: "Receiver's Name", type: "text" },
+    { name: "company", label: "Company's Name", type: "text" },
   ];
 
   return (

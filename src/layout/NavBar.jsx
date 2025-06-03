@@ -35,7 +35,7 @@ function NavBar() {
 
   return (
     <nav className="nav-bar">
-      <Link to="/">
+      <Link to="https://careerdesire.in" target="_blank">
         <img src={cdLogo} alt="Career desire logo" className="logo-img" />
       </Link>
       <div className="nav-options">
@@ -47,7 +47,7 @@ function NavBar() {
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <div className="profile-options">
-                <Link to="/"><p>Dashboard</p></Link>
+                <Link to="https://dashboard.careerdesire.in" target="_blank"><p>Dashboard</p></Link>
                 <div className="logout-container" onClick={() => setHandleLogout(true)}>
                   <p>Logout</p>
                   <FontAwesomeIcon icon={faRightFromBracket} />

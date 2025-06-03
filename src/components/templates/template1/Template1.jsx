@@ -44,10 +44,10 @@ function Template1({ setOpenEditor }) {
                     <div className="date">{`Date: ${coverLetterData.date}`}</div>
                 }
                 {coverLetterData.receiver &&
-                    <div className="receiver">{`Hiring Manager’s Name: ${coverLetterData.receiver}`}</div>
+                    <div className="receiver">{coverLetterData.receiver}</div>
                 }
-                {coverLetterData.location &&
-                    <div className="location">{`Address: ${coverLetterData.location}`}</div>
+                {coverLetterData.company &&
+                    <div className="company">{coverLetterData.company}</div>
                 }
                 {coverLetterData.content !== "Dear Mr./Ms." ? (
                     <>
