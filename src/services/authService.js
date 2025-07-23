@@ -15,7 +15,7 @@ export const setAccessToken = (token) => {
 
 export const getAccessToken = () => accessToken;
 
-// Attach access token to requests
+// Auto attach access token to requests
 API.interceptors.request.use(
   async (config) => {
     const token = getAccessToken();
